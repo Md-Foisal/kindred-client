@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { SOCIAL_LOGIN_KEY } from "@/components/auth/SocialButtons";
 import { clearToken } from "@/lib/api";
 import { signOut, useSession } from "@/lib/auth-client";
 import Logo from "./Logo";
@@ -28,6 +29,21 @@ export default function Navbar() {
   const user = session?.user;
   // if the photo url is broken we show the first letter instead
   const [avatarFailed, setAvatarFailed] = useState(false);
+
+  // google/github login comes back with a full page redirect, so greet the user here
+  useEffect(() => {
+    if (isPending || !user) return;
+    let startedAt: string | null = null;
+    try {
+      startedAt = sessionStorage.getItem(SOCIAL_LOGIN_KEY);
+      sessionStorage.removeItem(SOCIAL_LOGIN_KEY);
+    } catch {}
+    if (startedAt && Date.now() - Number(startedAt) < 15 * 60 * 1000) {
+      // wait a moment so the toaster below is ready to show it
+      const name = user.name || "friend";
+      setTimeout(() => toast.success(`Welcome back, ${name}!`), 300);
+    }
+  }, [isPending, user]);
 
   async function handleLogout() {
     await signOut();

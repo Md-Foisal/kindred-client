@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { signIn } from "@/lib/auth-client";
 
 type Provider = "google" | "github";
+
+export const SOCIAL_LOGIN_KEY = "kindred-social-login";
 
 function GoogleLogo() {
   return (
@@ -31,8 +33,19 @@ const pill =
 export default function SocialButtons({ callbackURL = "/" }: { callbackURL?: string }) {
   const [busy, setBusy] = useState<Provider | null>(null);
 
+  // back on the login page means the last google/github try did not finish
+  useEffect(() => {
+    try {
+      sessionStorage.removeItem(SOCIAL_LOGIN_KEY);
+    } catch {}
+  }, []);
+
   async function handle(provider: Provider) {
     setBusy(provider);
+    // the navbar reads this after the redirect back and shows the welcome toast
+    try {
+      sessionStorage.setItem(SOCIAL_LOGIN_KEY, String(Date.now()));
+    } catch {}
     // this leaves the page on success, so only reset on error
     const { error } = await signIn.social({ provider, callbackURL });
     if (error) {
