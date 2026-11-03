@@ -1,0 +1,218 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+  /* not used, and its @scope css breaks the dev server parser */
+  exclude: join;
+}
+
+/* kindred light: cool paper, indigo ink, a sunrise gradient that only shows up on purpose */
+@plugin "daisyui/theme" {
+  name: "kindred";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #f7f8fc;
+  --color-base-200: #eef0f8;
+  --color-base-300: #dfe2f0;
+  --color-base-content: #17153d;
+  --color-primary: #5b3df5;
+  --color-primary-content: #ffffff;
+  --color-secondary: #ffb547;
+  --color-secondary-content: #2a1700;
+  --color-accent: #d63af9;
+  --color-accent-content: #ffffff;
+  --color-neutral: #17153d;
+  --color-neutral-content: #eceaff;
+  --color-info: #3b82f6;
+  --color-success: #12a77f;
+  --color-success-content: #ffffff;
+  --color-warning: #f59e0b;
+  --color-error: #e5484d;
+  --color-error-content: #ffffff;
+  --radius-selector: 2rem;
+  --radius-field: 0.875rem;
+  --radius-box: 1.5rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "kindred-dark";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #0f0d26;
+  --color-base-200: #0a0920;
+  --color-base-300: #24214a;
+  --color-base-content: #e9e7ff;
+  --color-primary: #8b74ff;
+  --color-primary-content: #0d0a2b;
+  --color-secondary: #ffc266;
+  --color-secondary-content: #2a1700;
+  --color-accent: #e36bff;
+  --color-accent-content: #1a0322;
+  --color-neutral: #08071a;
+  --color-neutral-content: #e9e7ff;
+  --color-info: #60a5fa;
+  --color-success: #34d7a9;
+  --color-success-content: #04241b;
+  --color-warning: #fbbf24;
+  --color-error: #ff6b6f;
+  --color-error-content: #2a0405;
+  --radius-selector: 2rem;
+  --radius-field: 0.875rem;
+  --radius-box: 1.5rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #17153d;
+  --color-night: #0f0d26;
+  --color-sunrise-1: #5b3df5;
+  --color-sunrise-2: #d63af9;
+  --color-sunrise-3: #ffb547;
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* one heading style for every section */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-stretch: 85%;
+  text-wrap: balance;
+}
+
+.section-subtitle {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.9rem, 1.4rem + 6.2vw, 6.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-stretch: 75%;
+}
+
+.text-sunrise {
+  background: linear-gradient(100deg, var(--color-sunrise-1), var(--color-sunrise-2) 55%, var(--color-sunrise-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-sunrise {
+  background: linear-gradient(115deg, var(--color-sunrise-1), var(--color-sunrise-2) 55%, var(--color-sunrise-3));
+}
+
+/* the single button style used everywhere */
+.btn-kind {
+  @apply btn rounded-full border-0 px-6 font-semibold tracking-tight;
+  background: var(--color-base-content);
+  color: var(--color-base-100);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-kind:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--color-primary) 70%, transparent);
+}
+.btn-kind-ghost {
+  @apply btn rounded-full px-6 font-semibold tracking-tight;
+  background: transparent;
+  border: 1.5px solid color-mix(in oklab, var(--color-base-content) 25%, transparent);
+  color: inherit;
+}
+.btn-kind-ghost:hover {
+  border-color: var(--color-base-content);
+  background: color-mix(in oklab, var(--color-base-content) 6%, transparent);
+}
+
+/* ticket card, used for every event card so they all match */
+.ticket {
+  position: relative;
+  background: var(--color-base-100);
+  border: 1px solid var(--color-base-300);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.ticket-notch {
+  position: relative;
+  border-top: 2px dashed var(--color-base-300);
+}
+.ticket-notch::before,
+.ticket-notch::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--color-base-200);
+  border: 1px solid var(--color-base-300);
+}
+.ticket-notch::before {
+  left: -12px;
+}
+.ticket-notch::after {
+  right: -12px;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
