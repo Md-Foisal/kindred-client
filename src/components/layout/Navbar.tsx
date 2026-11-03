@@ -65,7 +65,8 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-base-content/10 bg-base-100/75 backdrop-blur-xl backdrop-saturate-150">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+      {/* very small phones (under 380px) get a smaller menu button and wordmark so nothing is cut off */}
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-4 max-[380px]:px-3 sm:gap-3 lg:grid lg:grid-cols-[1fr_auto_1fr] max-[380px]:[&_.btn-circle]:size-9 max-[380px]:[&_a[aria-label='Kindred_home']>span]:text-[1.3rem]">
         <div className="flex items-center gap-1">
           <div className="dropdown lg:hidden">
             <button tabIndex={0} className="btn btn-ghost btn-circle -ml-2" aria-label="Open menu">
@@ -84,6 +85,10 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              {/* on phones the theme switch lives here so the bar has room */}
+              <li className="mt-1 border-t border-base-300 pt-1 sm:hidden">
+                <ThemeToggle variant="menu" />
+              </li>
             </ul>
           </div>
           <Logo />
@@ -100,7 +105,9 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center justify-end gap-1.5 sm:gap-2">
-          <ThemeToggle />
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
           {isPending ? (
             <div className="skeleton size-9 rounded-full" />
           ) : user ? (
@@ -148,12 +155,12 @@ export default function Navbar() {
                   </ul>
                 </div>
               </div>
-              <button onClick={handleLogout} className="btn-kind-ghost btn-sm">
+              <button onClick={handleLogout} className="btn-kind-ghost btn-sm px-3.5! sm:px-6!">
                 Logout
               </button>
             </>
           ) : (
-            <Link href="/login" className="btn-kind btn-sm">
+            <Link href="/login" className="btn-kind btn-sm px-3.5! sm:px-6!">
               Login
             </Link>
           )}
