@@ -114,18 +114,18 @@ export default function EventsBrowser() {
         className="relative z-10 -mt-14 rounded-[1.75rem] border border-base-300 bg-base-100 p-3 shadow-[0_30px_80px_-40px_rgb(23_21_61/0.45)] sm:p-4"
       >
         <div className="flex items-center gap-2">
-          <label className="input h-14 w-full flex-1 gap-3 rounded-full border-base-300 bg-base-200/60 px-5 text-base focus-within:bg-base-100 focus-within:outline-primary">
+          <label className="input h-14 w-full flex-1 gap-3 rounded-full border-base-300 bg-base-200/60 px-5 text-base transition duration-200 focus-within:border-primary focus-within:bg-base-100 focus-within:shadow-[0_0_0_4px_color-mix(in_oklab,var(--color-primary)_18%,transparent)] focus-within:outline-none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-5 shrink-0 opacity-50" aria-hidden>
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.5-3.5" />
             </svg>
             <input
               type="search"
-              placeholder="Search by title or location, like “beach” or “Lisbon”"
+              placeholder="Search by title or location, like “cleanup” or “Mirpur”"
               value={text}
               onChange={(e) => setText(e.target.value)}
               aria-label="Search events by title or location"
-              className="grow"
+              className="grow focus:outline-none focus-visible:outline-none"
             />
           </label>
           {hasFilters && (

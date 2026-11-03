@@ -31,7 +31,7 @@ export default function LoginPage() {
       title="Welcome back"
       subtitle="Log in to join events, keep track of your tickets and host drives in your area."
       line="Good things happen when neighbours show up."
-      caption="Every week, people near you clean beaches, plant trees and run food drives. Kindred helps you find them."
+      caption="Every week, people near you clean up parks, plant trees and run food drives. Kindred helps you find them."
     >
       <Suspense fallback={<FormSkeleton />}>
         <LoginForm />

@@ -215,7 +215,7 @@ function FormPreview() {
           </div>
           <div>
             <span className={label}>Location</span>
-            <div className={field}>North gate, Riverside Park</div>
+            <div className={field}>North gate, Dhanmondi Lake</div>
           </div>
           <div>
             <span className={label}>Cover photo</span>
