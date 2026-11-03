@@ -28,6 +28,12 @@ export const auth = betterAuth({
   session: {
     expiresIn: 60 * 60 * 24 * 7,
   },
+  user: {
+    // optional banner on the profile page, empty means the default one
+    additionalFields: {
+      coverImage: { type: "string", required: false, input: true },
+    },
+  },
   plugins: [
     jwt({
       jwt: {
