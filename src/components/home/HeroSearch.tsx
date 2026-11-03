@@ -20,7 +20,7 @@ export default function HeroSearch() {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex w-full max-w-2xl flex-col gap-2 rounded-[1.75rem] border border-white/15 bg-white/10 p-2 backdrop-blur-xl sm:flex-row sm:items-center sm:rounded-full"
+      className="flex w-full max-w-2xl flex-col gap-2 rounded-[1.75rem] border border-white/15 bg-white/10 p-2 backdrop-blur-xl transition duration-200 focus-within:border-white/45 focus-within:bg-white/15 focus-within:shadow-[0_0_0_5px_rgb(139_116_255/0.28),0_20px_60px_-20px_rgb(139_116_255/0.6)] sm:flex-row sm:items-center sm:rounded-full"
       role="search"
     >
       <label className="flex flex-1 items-center gap-3 px-4">
@@ -33,7 +33,7 @@ export default function HeroSearch() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search a city, area or cause"
-          className="h-12 w-full bg-transparent text-white placeholder:text-white/50 focus:outline-none"
+          className="h-12 w-full bg-transparent text-white placeholder:text-white/50 focus:outline-none focus-visible:outline-none"
         />
       </label>
       <label className="flex items-center gap-2 border-white/15 px-4 sm:border-l">
@@ -41,7 +41,7 @@ export default function HeroSearch() {
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="h-12 w-full cursor-pointer bg-transparent text-white focus:outline-none sm:w-40 [&>option]:text-ink"
+          className="h-12 w-full cursor-pointer bg-transparent text-white focus:outline-none focus-visible:outline-none sm:w-40 [&>option]:text-ink"
         >
           <option value="">Any cause</option>
           {EVENT_TYPES.map((t) => (
