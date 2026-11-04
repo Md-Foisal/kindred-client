@@ -94,29 +94,17 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        <div className="mt-16 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:justify-between">
-          <p>&copy; {year} Kindred. All rights reserved.</p>
-          <p>Made with care for communities everywhere.</p>
-        </div>
       </div>
 
-      {/* the signature: a giant outlined wordmark that runs off the bottom edge */}
-      <div aria-hidden className="pointer-events-none mx-auto mt-10 -mb-[3.5%] max-w-7xl select-none px-4">
-        <svg viewBox="0 0 1000 270" className="block w-full overflow-visible">
+      {/* the signature: a giant outlined wordmark */}
+      <div aria-hidden className="pointer-events-none mx-auto mt-12 max-w-7xl select-none px-4 md:mt-16">
+        <svg viewBox="-4 -30 1008 304" className="block w-full overflow-visible">
           <defs>
             <linearGradient id="footer-mark" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
               <stop stopColor="#8b74ff" />
               <stop offset="0.55" stopColor="#e36bff" />
               <stop offset="1" stopColor="#ffc266" />
             </linearGradient>
-            <linearGradient id="footer-fade" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0.25" stopColor="#fff" />
-              <stop offset="1" stopColor="#fff" stopOpacity="0" />
-            </linearGradient>
-            <mask id="footer-mask">
-              <rect width="1000" height="270" fill="url(#footer-fade)" />
-            </mask>
           </defs>
           <text
             x="500"
@@ -124,17 +112,24 @@ export default function Footer() {
             textAnchor="middle"
             textLength="1000"
             lengthAdjust="spacingAndGlyphs"
-            fill="none"
+            fill="var(--color-night)"
             stroke="url(#footer-mark)"
-            strokeOpacity="0.5"
-            strokeWidth="1.4"
-            mask="url(#footer-mask)"
+            strokeOpacity="0.75"
+            strokeWidth="2.8"
+            paintOrder="stroke"
             className="font-display"
-            style={{ fontSize: 350, fontWeight: 800, fontStretch: "75%", letterSpacing: "-0.04em" }}
+            style={{ fontSize: 350, fontWeight: 800, fontStretch: "75%", letterSpacing: "0" }}
           >
             Kindred
           </text>
         </svg>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 pb-8">
+        <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:justify-between">
+          <p>&copy; {year} Kindred. All rights reserved.</p>
+          <p>Made with care for communities everywhere.</p>
+        </div>
       </div>
     </footer>
   );
