@@ -2,6 +2,10 @@
 
 **Live site:** https://kindred-events.vercel.app
 
+**Demo video:** https://youtu.be/gdyQ4FAR8_4
+
+[![Watch the Kindred demo video on YouTube](docs/screenshots/video-thumbnail.jpg)](https://youtu.be/gdyQ4FAR8_4)
+
 Kindred is a place where people can create, join and keep track of social service events in their own area. Things like winter clothes distribution, tree plantation, area cleanup or a blood donation camp.
 
 ![Kindred home page](docs/screenshots/home.jpg)
