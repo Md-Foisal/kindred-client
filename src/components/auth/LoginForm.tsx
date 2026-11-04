@@ -95,7 +95,7 @@ export default function LoginForm() {
               type={showPassword ? "text" : "password"}
               autoComplete="current-password"
               placeholder="Your password"
-              className="grow"
+              className="grow focus-visible:outline-none"
               value={password}
               aria-invalid={Boolean(errors.password)}
               aria-describedby={errors.password ? "password-error" : undefined}

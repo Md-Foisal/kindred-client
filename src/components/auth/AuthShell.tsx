@@ -12,7 +12,7 @@ interface AuthShellProps {
 
 // tall rounded field, red when wrong, violet ring while typing
 export function authInputClass(error?: string) {
-  return `input h-12 w-full bg-base-100 px-4 text-base ${error ? "input-error" : "focus-within:outline-primary"}`;
+  return `input h-12 w-full bg-base-100 px-4 text-base ${error ? "input-error focus-visible:outline-error" : "focus-within:outline-primary"}`;
 }
 
 export function FieldError({ id, children }: { id: string; children: ReactNode }) {

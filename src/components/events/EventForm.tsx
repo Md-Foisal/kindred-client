@@ -26,7 +26,7 @@ interface EventFormProps {
 // tall rounded field, red when wrong, violet ring while typing
 export function fieldClass(kind: "input" | "textarea", error?: string) {
   const base = kind === "input" ? "input h-12 w-full px-4 text-base" : "textarea min-h-40 w-full px-4 py-3 text-base leading-relaxed";
-  return `${base} bg-base-100 ${error ? (kind === "input" ? "input-error" : "textarea-error") : "focus-within:outline-primary focus:outline-primary"}`;
+  return `${base} bg-base-100 ${error ? (kind === "input" ? "input-error focus-visible:outline-error" : "textarea-error focus-visible:outline-error") : "focus-within:outline-primary focus:outline-primary"}`;
 }
 
 export default function EventForm({ initial = EMPTY_EVENT, submitLabel, submitting, onSubmit }: EventFormProps) {

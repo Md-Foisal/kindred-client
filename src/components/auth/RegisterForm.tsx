@@ -147,7 +147,7 @@ export default function RegisterForm() {
               id="image"
               type="url"
               placeholder="https://example.com/me.jpg"
-              className="grow"
+              className="grow focus-visible:outline-none"
               value={form.image}
               aria-invalid={Boolean(errors.image)}
               aria-describedby={described("image", "image-help")}
@@ -172,7 +172,7 @@ export default function RegisterForm() {
               type={showPassword ? "text" : "password"}
               autoComplete="new-password"
               placeholder="Create a password"
-              className="grow"
+              className="grow focus-visible:outline-none"
               value={form.password}
               aria-invalid={Boolean(errors.password)}
               aria-describedby={described("password", "password-rules")}
